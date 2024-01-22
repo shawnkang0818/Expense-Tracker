@@ -7,7 +7,7 @@ const expenseSchema = new Schema({
   date: Date,
   // category: [categorySchema],
   description: String,
-  
+  reasonable: Boolean,
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true

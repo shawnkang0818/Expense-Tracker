@@ -16,6 +16,7 @@ function index(req, res) {
 
 function create(req, res) {
   req.body.owner = req.user.profile._id
+  req.body.reasonable = !!req.body.reasonable
   Expense.create(req.body)
   .then(expense => {
     res.redirect('/expenses')

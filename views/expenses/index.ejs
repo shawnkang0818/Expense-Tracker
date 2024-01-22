@@ -1,6 +1,6 @@
 
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/form.css" />
+<link rel="stylesheet" href="/stylesheets/expenses/form.css" />
 <%- include('../partials/nav') %>
 
 <section>
@@ -9,14 +9,16 @@
   <% if (user) { %>
     <h2>Add a Expense</h2>
     <form action="/expenses" method="POST">
-      <label>Amount: </label>
-      <input type="text" name="amount" autocomplete="off" placeholder="0">
+      <label for="amoun-input">Amount: </label>
+      <input type="text" id="amoun-input" name="amount" autocomplete="off" placeholder="0">
       <label for="date-input">Date Spent:</label>
       <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input">
-      <label>category: </label>
-      <input type="text" name="category" autocomplete="off" placeholder="food">
-      <label> Description: </label>
-      <textarea type="text" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
+      <label for="category-input">category: </label>
+      <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food">
+      <label for="description-textarea"> Description: </label>
+      <textarea type="text" id="description-textarea" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
+      <label for="reasonable-input" ></label>
+      <input type="checkbox" name="reasonable">
       <button type="submit">Add Expense</button>
     </form>
   <% } %>
@@ -26,22 +28,19 @@
       <tr>
         <th>Amount</th>
         <th>Date</th>
-        <th>Category</th>
-        <th>description</th>
+        <!-- <th>Category</th> -->
+        <th>Description</th>
+        <th>Reasonable?</th>
       </tr>
     </thread>
     <tbody>
       <% expenses.forEach(expense => { %>
        <tr>
         <td><%= expense.amount %></td>
-        <td><%= expense.date %></td>
+        <td><%= expense.date.toLocaleString() %></td>
         <!-- <td><%= expense.category %></td> -->
         <td><%= expense.description %></td>
-        <td>
-          <form>
-            <botton type="submit">?</botton>
-          </form>
-        </td>
+        <td><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></td>
        </tr>
       <% }) %>
     </tbody>
