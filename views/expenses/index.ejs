@@ -9,8 +9,8 @@
   <% if (user) { %>
     <h2>Add a Expense</h2>
     <form action="/expenses" method="POST">
-      <label for="amoun-input">Amount: </label>
-      <input type="text" id="amoun-input" name="amount" autocomplete="off" placeholder="0">
+      <label for="price-input">Price: </label>
+      <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0">
       <label for="date-input">Date Spent:</label>
       <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input">
       <label for="category-input">category: </label>
@@ -26,7 +26,7 @@
   <table>
     <thread>
       <tr>
-        <th>Amount</th>
+        <th>Price $</th>
         <th>Date</th>
         <!-- <th>Category</th> -->
         <th>Description</th>
@@ -36,7 +36,7 @@
     <tbody>
       <% expenses.forEach(expense => { %>
        <tr>
-        <td><%= expense.amount %></td>
+        <td><%= expense.price %></td>
         <td><%= expense.date.toLocaleString() %></td>
         <!-- <td><%= expense.category %></td> -->
         <td><%= expense.description %></td>
