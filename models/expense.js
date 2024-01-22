@@ -5,8 +5,9 @@ const Schema = mongoose.Schema
 const expenseSchema = new Schema({
   amount: Number,
   date: Date,
-  description: String,
   // category: [categorySchema],
+  description: String,
+  
   owner: {type: Schema.Types.ObjectId, ref: "Profile"}
 }, {
   timestamps: true
