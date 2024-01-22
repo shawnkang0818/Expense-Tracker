@@ -14,6 +14,19 @@ function index(req, res) {
   })
 }
 
+function create(req, res) {
+  req.body.owner = req.user.profile._id
+  Expense.create(req.body)
+  .then(expense => {
+    res.redirect('/expenses')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/expenses")
+  })
+}
+
 export {
-  index
+  index,
+  create
 }
