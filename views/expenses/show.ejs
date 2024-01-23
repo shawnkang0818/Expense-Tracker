@@ -1,0 +1,17 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/expenses/form.css" />
+<%- include('../partials/nav') %>
+
+<section>
+	<ul>
+    <li>Money Spent: <%= expense.price %></a></li>
+  
+    <li>Date: <%= expense.date.toLocaleString() %></li>
+    <!-- <td><%= expense.category %></td> -->
+    <li>Description: <%= expense.description %></li>
+  
+    <li>Reasonable: <%= expense.reasonable ? 'reasonable' : 'not reasonable' %></li>
+  </ul>
+</section>
+
+<%- include('../partials/footer') %>
