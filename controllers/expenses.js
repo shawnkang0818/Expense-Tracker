@@ -42,8 +42,20 @@ function show(req, res) {
   })
 }
 
+function changeReasonable(req, res) {
+  Expense.findById(req.params.expenseId)
+  .then(expense => {
+    expense.reasonable = !expense.reasonable
+    expense.save()
+    .then(() => {
+      res.redirect(`/expenses/${expense._id}`)
+    })
+  })
+}
+
 export {
   index,
   create,
-  show
+  show,
+  changeReasonable,
 }

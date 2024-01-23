@@ -11,6 +11,8 @@ router.get('/', expensesCtrl.index)
 router.get('/:expenseId', expensesCtrl.show)
 //POST localhost:3000/expenses
 router.post('/', isLoggedIn, expensesCtrl.create)
+//Patch localhost:3000/tacos/edit
+router.patch('/:expenseId/edit',  isLoggedIn, expensesCtrl.changeReasonable)
 
 export {
   router

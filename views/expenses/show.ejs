@@ -1,10 +1,10 @@
 <%- include('../partials/html-head') %>
 <link rel="stylesheet" href="/stylesheets/expenses/form.css" />
 <%- include('../partials/nav') %>
-
+<h1> Current Expense</h1>
 <section>
 	<ul>
-    <li>Money Spent: <%= expense.price %></a></li>
+    <li>Money Spent: $<%= expense.price %></a></li>
   
     <li>Date: <%= expense.date.toLocaleString() %></li>
     <!-- <td><%= expense.category %></td> -->
@@ -12,6 +12,16 @@
   
     <li>Reasonable: <%= expense.reasonable ? 'reasonable' : 'not reasonable' %></li>
   </ul>
+  <% if (user) { %>
+    <form 
+      action="/expenses/<%= expense._id %>/edit?_method=PATCH" 
+      method="POST"
+    >
+      <button class="btn" type="submit">
+        Make it  <%= expense.reasonable ? 'not reasonable' : 'reasonable' %>
+      </button>
+    </form>
+  <% } %>
 </section>
 
 <%- include('../partials/footer') %>
