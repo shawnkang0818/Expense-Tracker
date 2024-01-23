@@ -28,7 +28,18 @@ function create(req, res) {
 }
 
 function show(req, res) {
-  console.log('hello')
+  Expense.findById(req.params.expenseId)
+  .populate("owner")
+  .then(expense => {
+    res.render('expenses/show', {
+      expense,
+      title: "Curret Expense"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/expenses")
+  })
 }
 
 export {
