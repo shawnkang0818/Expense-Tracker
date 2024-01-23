@@ -5,9 +5,11 @@ import { isLoggedIn } from "../middleware/middleware.js";
 
 const router = Router()
 
-//GET localhost:3000/
+//GET localhost:3000/expenses
 router.get('/', expensesCtrl.index)
-//POST localhost:
+//GET localhost:3000/expenses
+router.get('/:expenseId', expensesCtrl.show)
+//POST localhost:3000/expenses
 router.post('/', isLoggedIn, expensesCtrl.create)
 
 export {

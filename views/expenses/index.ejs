@@ -10,15 +10,15 @@
     <h2>Add a Expense</h2>
     <form action="/expenses" method="POST">
       <label for="price-input">Price: </label>
-      <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0">
+      <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0" required>
       <label for="date-input">Date Spent:</label>
-      <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input">
+      <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input" required>
       <label for="category-input">category: </label>
-      <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food">
+      <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food" required>
       <label for="description-textarea"> Description: </label>
       <textarea type="text" id="description-textarea" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
-      <label for="reasonable-input" ></label>
-      <input type="checkbox" name="reasonable">
+      <label for="reasonable-input" >Reasonable</label>
+      <input type="checkbox" name="reasonable" >
       <button type="submit">Add Expense</button>
     </form>
   <% } %>
@@ -26,7 +26,7 @@
   <table>
     <thread>
       <tr>
-        <th>Price $</th>
+        <th>Price</th>
         <th>Date</th>
         <!-- <th>Category</th> -->
         <th>Description</th>
@@ -36,7 +36,7 @@
     <tbody>
       <% expenses.forEach(expense => { %>
        <tr>
-        <td><%= expense.price %></td>
+        <td><a href="/expenses/<%= expense._id %>"><%= expense.price %></a></td>
         <td><%= expense.date.toLocaleString() %></td>
         <!-- <td><%= expense.category %></td> -->
         <td><%= expense.description %></td>
