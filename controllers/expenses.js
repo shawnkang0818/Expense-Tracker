@@ -86,11 +86,16 @@ function update(req, res){
   })
 }
 
+function deleteExpense(req, res){
+
+}
+
 export {
   index,
   create,
   show,
   changeReasonable,
   edit,
-  update
+  update,
+  deleteExpense as delete
 }

@@ -12,7 +12,7 @@
   
     <li>Reasonable: <%= expense.reasonable ? 'reasonable' : 'not reasonable' %></li>
   </ul>
-  <% if (user) { %>
+  <% if (expense.owner.equals(user?.profile._id)) { %>
     <form 
       action="/expenses/<%= expense._id %>/changeReasonable?_method=PATCH" 
       method="POST"
