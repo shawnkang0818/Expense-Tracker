@@ -1,0 +1,27 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/expenses/form.css" />
+<%- include('../partials/nav') %>
+
+<section>
+
+    <h2>Edit Expense Info</h2>
+    <form id="new-form" action="/expenses/<%= expense._id %>?_method=PUT"  method="POST">
+      <label for="price-input">Price: </label>
+      <input type="text" id="price-input" name="price" value="<%= expense.price %>" required>
+      <label for="date-input">Date Spent:</label>
+      <input type="datetime" name="date" min="2024-01-30T09:00" id="date-input" value="<%= expense.date.toLocaleString() %>" required>
+      <label for="category-input">category: </label>
+      <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food" value="<%= expense.category %>" >
+      <label for="description-textarea"> Description: </label>
+      <input type="text" id="description-textarea" name="description" rows="2" cols="30" value="<%= expense.description %>"></input>
+      <label for="reasonable-input" >Reasonable</label>
+      <input type="checkbox" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
+      <button type="submit">Save Change</button>
+    </form>
+
+</section>
+
+
+
+
+<%- include('../partials/footer') %>
