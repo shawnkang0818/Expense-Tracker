@@ -53,9 +53,44 @@ function changeReasonable(req, res) {
   })
 }
 
+function edit(req, res){
+  Expense.findById(req.params.expenseId)
+  .then(expense => {
+    res.render('expenses/edit', {
+      expense,
+      title: 'Edit Expense'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/expenses')
+  })
+}
+
+function update(req, res){
+  Expense.finById(req.params.expenseId)
+  .then(expense => {
+    if(expense.owner.equals(req.user.profile._id)){
+      req.body.reasonable = !!req.body.reasonable
+      expense.updateOne(req.body)
+      .then(() => {
+        res.redirect(`/expenses/${expense._id}`)
+      })
+    } else {
+      throw new Error('Not authorized')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/expenses')
+  })
+}
+
 export {
   index,
   create,
   show,
   changeReasonable,
+  edit,
+  update
 }

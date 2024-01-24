@@ -26,7 +26,7 @@
   <table>
     <thread>
       <tr>
-        <th>Price</th>
+        <th>Price </th>
         <th>Date</th>
         <!-- <th>Category</th> -->
         <th>Description</th>
@@ -36,11 +36,12 @@
     <tbody>
       <% expenses.forEach(expense => { %>
        <tr>
-        <td><a href="/expenses/<%= expense._id %>"><%= expense.price %></a></td>
+        <td><%= expense.price %></a></td>
         <td><%= expense.date.toLocaleString() %></td>
         <!-- <td><%= expense.category %></td> -->
         <td><%= expense.description %></td>
-        <td><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></td>
+        <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
+        <td><a href="/expenses/<%= expense._id %>/edit"><button>edit</button></a></td>
        </tr>
       <% }) %>
     </tbody>

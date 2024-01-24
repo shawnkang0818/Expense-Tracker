@@ -4,7 +4,7 @@
 <h1> Current Expense</h1>
 <section>
 	<ul>
-    <li>Money Spent: $<%= expense.price %></a></li>
+    <li>Money Spent: <%= expense.price %></li>
   
     <li>Date: <%= expense.date.toLocaleString() %></li>
     <!-- <td><%= expense.category %></td> -->
@@ -14,14 +14,15 @@
   </ul>
   <% if (user) { %>
     <form 
-      action="/expenses/<%= expense._id %>/edit?_method=PATCH" 
+      action="/expenses/<%= expense._id %>/changeReasonable?_method=PATCH" 
       method="POST"
     >
       <button class="btn" type="submit">
-        Make it  <%= expense.reasonable ? 'not reasonable' : 'reasonable' %>
+        Swich it  <%= expense.reasonable ? 'not reasonable' : 'reasonable' %>
       </button>
     </form>
   <% } %>
+
 </section>
 
 <%- include('../partials/footer') %>
