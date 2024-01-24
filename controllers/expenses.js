@@ -87,7 +87,22 @@ function update(req, res){
 }
 
 function deleteExpense(req, res){
-
+  Expense.findById(req.params.expenseId)
+  .then(expense => {
+    if(expense.owner.equals(req.user.profile._id)){
+      req.body.reasonable = !!req.body.reasonable
+      expense.deleteOne()
+      .then(() => {
+        res.redirect('/expenses')
+      })
+    } else {
+      throw new Error('Not authorized')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/expenses')
+  })
 }
 
 export {

@@ -18,7 +18,7 @@ router.get('/:expenseId/edit', isLoggedIn, expensesCtrl.edit)
 //PUT localhost:3000/expenses/:expenseId/
 router.put('/:expenseId', isLoggedIn, expensesCtrl.update)
 //DETELE localhost:3000/expenses/:expenseId/
-router.delete('/:tacoId', isLoggedIn, expensesCtrl.delete)
+router.delete('/:expenseId', isLoggedIn, expensesCtrl.delete)
 
 export {
   router
