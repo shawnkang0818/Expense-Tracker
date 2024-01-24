@@ -68,7 +68,7 @@ function edit(req, res){
 }
 
 function update(req, res){
-  Expense.finById(req.params.expenseId)
+  Expense.findById(req.params.expenseId)
   .then(expense => {
     if(expense.owner.equals(req.user.profile._id)){
       req.body.reasonable = !!req.body.reasonable
