@@ -15,7 +15,7 @@
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: calc(50% - 20px); /* Adjust the width of each card */
+  width: calc(50% - 200px); /* Adjust the width of each card */
 }
 
 .budget-card h2 {
