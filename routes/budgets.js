@@ -9,7 +9,7 @@ const router = Router()
 // POST localhost:3000/budgets
 router.post('/', isLoggedIn, budgetsCtrl.create);
 // Get localhost:3000/budgets
-router.get('/budgets', isLoggedIn, budgetsCtrl.index);
+router.get('/', isLoggedIn, budgetsCtrl.index);
 export {
   router
 }

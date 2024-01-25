@@ -14,16 +14,16 @@ function create(req, res) {
 
 function index(req, res){
   Budget.find({})
-  .then(budgets => {
-    res.render('expenses/index', {
-      budgets,
-      title: 'Budget'
+    .then(budgets => {
+      res.render('budgets/index', {
+        budgets,
+        title: 'Budget'
+      });
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect("/")
-  })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/");
+    });
 }
 
 export {

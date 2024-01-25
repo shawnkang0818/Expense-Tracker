@@ -1,0 +1,21 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/budgets/index.css" />
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Budgets</h1>
+  <% if (user) { %>
+  <% if (budgets && budgets.length > 0) { %>
+    <ul>
+      <% budgets.forEach(budget => { %>
+        <li><%= budget.amount %> - <%= budget.category %> (<%= budget.timePeriod %>)</li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No budgets found.</p>
+  <% } %>
+  <% } %>
+</section>
+
+<%- include('../partials/footer') %>
+
