@@ -1,0 +1,16 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<h1>Budgets</h1>
+  <ul>
+    <% budgets.forEach(budget => { %>
+      <li>
+        Amount: <%= budget.amount %>,
+        Category: <%= budget.category %>,
+        Time Period: <%= budget.timePeriod %>,
+        Owner: <%= budget.owner.name %> <!-- Assuming 'name' is a field in the Profile model -->
+      </li>
+    <% }); %>
+  </ul>
+
+  <%- include('../partials/footer') %>
