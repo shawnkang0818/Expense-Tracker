@@ -4,7 +4,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%- include('../partials/nav') %>
 <h1> Current Expense</h1>
+
 <section>
+  <% if (expense.owner.equals(user?.profile._id)) { %>
 	<ul>
     <li>Money Spent: <%= expense.price %></li>
   
@@ -15,7 +17,7 @@
     <li>Reasonable: <%= expense.reasonable ? 'reasonable' : 'not reasonable' %></li>
     <li><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></li>
   </ul>
-  <% if (expense.owner.equals(user?.profile._id)) { %>
+  
     <form 
       action="/expenses/<%= expense._id %>/changeReasonable?_method=PATCH" 
       method="POST"

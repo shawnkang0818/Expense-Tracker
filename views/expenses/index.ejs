@@ -55,20 +55,22 @@
       </tr>
     </thead>
     <tbody>
-      <% expenses.forEach(expense => { %>
-        <% sum += expense.price %>
+        <% expenses.forEach(expense => { %>
+          <% sum += expense.price %>
+          <% if (expense.owner.equals(user?.profile._id)) { %>
+          <tr>
+            <td>$<%= expense.price %></td>
+            <td><%= expense.date.toISOString().slice(0,16) %></td>
+            <td><%= expense.description %></td>
+            <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
+            <td><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></td>
+          </tr>
+          <% } %>
+        <% }) %>
         <tr>
-          <td>$<%= expense.price %></td>
-          <td><%= expense.date.toLocaleString() %></td>
-          <td><%= expense.description %></td>
-          <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
-          <td><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></td>
+          <td colspan="4">Total Expense: $<%= sum %></td>
+          <td></td>
         </tr>
-      <% }) %>
-      <tr>
-        <td colspan="4">Total Expense: $<%= sum %></td>
-        <td></td>
-      </tr>
     </tbody>
   </table>
   <% } %>

@@ -6,6 +6,7 @@
 
 <section class="container">
   <% if (user) { %>
+    
     <h1>Budgets</h1>
     <% if (budgets && budgets.length > 0) { %>
 
@@ -15,6 +16,7 @@
       <div class="budget-cards">
         <% let uniquePeriods = new Set(); %>
         <% budgets.forEach(budget => { %>
+          <% if (budget.owner.equals(user?.profile._id)) { %>
           <% if (!uniquePeriods.has(budget.timePeriod)) { %>
             <div class="budget-card">
               <h2><%= budget.timePeriod %></h2>
@@ -37,6 +39,7 @@
               </ul>
             </div>
             <% uniquePeriods.add(budget.timePeriod); %>
+          <% } %>
           <% } %>
         <% }) %>
       </div>
