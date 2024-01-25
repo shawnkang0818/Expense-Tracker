@@ -1,5 +1,5 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/expenses/form.css" />
+<link rel="stylesheet" href="/stylesheets/expenses/edit.css" />
 <%- include('../partials/nav') %>
 
 <section>
@@ -16,11 +16,13 @@
       <input type="text" id="description-textarea" name="description" rows="2" cols="30" value="<%= expense.description %>"></input>
       <label for="reasonable-input" >Reasonable</label>
       <input type="checkbox" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
+  <div class="btn-container" >
       <button class="btn" type="submit">Save Change</button>
     </form>
     <form action="/expenses/<%= expense._id %>?_method=DELETE" method="POST">
       <button class="btn" type="submit">Delete this expense</button>
     </form>
+  </div>
   <% } %>
 </section>
 
