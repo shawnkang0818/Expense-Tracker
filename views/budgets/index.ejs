@@ -1,21 +1,74 @@
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/budgets/index.css" />
+<link rel="stylesheet" href="/stylesheets/budgets/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <%- include('../partials/nav') %>
 
-<section>
-  <h1>Budgets</h1>
+<section class="container">
   <% if (user) { %>
-  <% if (budgets && budgets.length > 0) { %>
-    <ul>
-      <% budgets.forEach(budget => { %>
-        <li><%= budget.amount %> - <%= budget.category %> (<%= budget.timePeriod %>)</li>
-      <% }) %>
-    </ul>
-  <% } else { %>
-    <p>No budgets found.</p>
-  <% } %>
+    <h1>Budgets</h1>
+    <% if (budgets && budgets.length > 0) { %>
+      <div class="budget-cards">
+        <% let currentPeriod = null; %>
+        <% let totalAmount = 0; %>
+        <% budgets.forEach(budget => { %>
+          <% if (budget.timePeriod !== currentPeriod) { %>
+            <% if (currentPeriod !== null) { %>
+              <div class="budget-card">
+                <h2><%= currentPeriod %></h2>
+                <p>Total Amount: $<%= totalAmount %></p>
+                <ul class="budget-list">
+                  <% budgets
+                    .filter(b => b.timePeriod === currentPeriod)
+                    .forEach(b => { %>
+                      <li>
+                        $<%= b.amount %> - <%= b.category %>
+                        <form
+                          action="/budgets/<%= b._id %>?_method=DELETE"
+                          method="POST"
+                          style="display: inline;"
+                        >
+                          <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                      </li>
+                    <% }) %>
+                </ul>
+              </div>
+            <% } %>
+
+            <% totalAmount = 0; %>
+          <% } %>
+
+          <% totalAmount += budget.amount; %>
+          <% currentPeriod = budget.timePeriod; %>
+        <% }) %>
+
+        <!-- Display the total amount for the last time period -->
+        <div class="budget-card">
+          <h2><%= currentPeriod %></h2>
+          <p>Total Amount: $<%= totalAmount %></p>
+          <ul class="budget-list">
+            <% budgets
+              .filter(b => b.timePeriod === currentPeriod)
+              .forEach(b => { %>
+                <li>
+                  <%= b.amount %> - <%= b.category %>
+                  <form
+                    action="/budgets/<%= b._id %>?_method=DELETE"
+                    method="POST"
+                    style="display: inline;"
+                  >
+                    <button type="submit" class="delete-btn">Delete</button>
+                  </form>
+                </li>
+              <% }) %>
+          </ul>
+        </div>
+      </div>
+    <% } else { %>
+      <p>No budgets found.</p>
+    <% } %>
   <% } %>
 </section>
 
 <%- include('../partials/footer') %>
-

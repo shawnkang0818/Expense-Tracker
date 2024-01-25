@@ -1,0 +1,46 @@
+.container {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+}
+
+.budget-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.budget-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(50% - 20px); /* Adjust the width of each card */
+}
+
+.budget-card h2 {
+  margin-bottom: 10px;
+}
+
+.budget-list {
+  list-style: none;
+  padding: 0;
+}
+
+.budget-list li {
+  margin-bottom: 8px;
+}
+
+.delete-btn {
+  background-color: #ff6347; /* Adjust the color as needed */
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #d9534f; /* Adjust the hover color as needed */
+}
