@@ -13,7 +13,17 @@ function create(req, res) {
 }
 
 function index(req, res){
-
+  Budget.find({})
+  .then(budgets => {
+    res.render('expenses/index', {
+      budgets,
+      title: 'Budget'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
 }
 
 export {
