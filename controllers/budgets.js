@@ -1,4 +1,4 @@
-import { Budget } from "../models/budgets.js"
+import { Budget } from "../models/budget.js"
 
 function create(req, res) {
   req.body.owner = req.user.profile._id

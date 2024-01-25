@@ -8,62 +8,37 @@
   <% if (user) { %>
     <h1>Budgets</h1>
     <% if (budgets && budgets.length > 0) { %>
+
+      <% let totalAmountAll = budgets.reduce((acc, budget) => acc + budget.amount, 0); %>
+      <h3>All Budget: $<%= totalAmountAll %></h3>
+
       <div class="budget-cards">
-        <% let currentPeriod = null; %>
-        <% let totalAmount = 0; %>
+        <% let uniquePeriods = new Set(); %>
         <% budgets.forEach(budget => { %>
-          <% if (budget.timePeriod !== currentPeriod) { %>
-            <% if (currentPeriod !== null) { %>
-              <div class="budget-card">
-                <h2><%= currentPeriod %></h2>
-                <p>Total Amount: $<%= totalAmount %></p>
-                <ul class="budget-list">
-                  <% budgets
-                    .filter(b => b.timePeriod === currentPeriod)
-                    .forEach(b => { %>
-                      <li>
-                        $<%= b.amount %> - <%= b.category %>
-                        <form
-                          action="/budgets/<%= b._id %>?_method=DELETE"
-                          method="POST"
-                          style="display: inline;"
-                        >
-                          <button type="submit" class="delete-btn">Delete</button>
-                        </form>
-                      </li>
-                    <% }) %>
-                </ul>
-              </div>
-            <% } %>
-
-            <% totalAmount = 0; %>
+          <% if (!uniquePeriods.has(budget.timePeriod)) { %>
+            <div class="budget-card">
+              <h2><%= budget.timePeriod %></h2>
+              <p>Total Amount: $<%= totalAmountForPeriod(budget.timePeriod) %></p>
+              <ul class="budget-list">
+                <% budgets
+                  .filter(b => b.timePeriod === budget.timePeriod)
+                  .forEach(b => { %>
+                    <li>
+                      $<%= b.amount %> - <%= b.category %>
+                      <form
+                        action="/budgets/<%= b._id %>?_method=DELETE"
+                        method="POST"
+                        style="display: inline;"
+                      >
+                        <button type="submit" class="delete-btn">Delete</button>
+                      </form>
+                    </li>
+                  <% }) %>
+              </ul>
+            </div>
+            <% uniquePeriods.add(budget.timePeriod); %>
           <% } %>
-
-          <% totalAmount += budget.amount; %>
-          <% currentPeriod = budget.timePeriod; %>
         <% }) %>
-
-        <!-- Display the total amount for the last time period -->
-        <div class="budget-card">
-          <h2><%= currentPeriod %></h2>
-          <p>Total Amount: $<%= totalAmount %></p>
-          <ul class="budget-list">
-            <% budgets
-              .filter(b => b.timePeriod === currentPeriod)
-              .forEach(b => { %>
-                <li>
-                  <%= b.amount %> - <%= b.category %>
-                  <form
-                    action="/budgets/<%= b._id %>?_method=DELETE"
-                    method="POST"
-                    style="display: inline;"
-                  >
-                    <button type="submit" class="delete-btn">Delete</button>
-                  </form>
-                </li>
-              <% }) %>
-          </ul>
-        </div>
       </div>
     <% } else { %>
       <p>No budgets found.</p>
@@ -72,3 +47,11 @@
 </section>
 
 <%- include('../partials/footer') %>
+
+<%
+function totalAmountForPeriod(timePeriod) {
+  return budgets
+    .filter(b => b.timePeriod === timePeriod)
+    .reduce((acc, b) => acc + b.amount, 0);
+}
+%>
