@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import * as expensesCtrl from '../controllers/expenses.js'
-import { isLoggedIn } from "../middleware/middleware.js";
+import { isLoggedIn } from "../middleware/middleware.js"
 
 
 const router = Router()

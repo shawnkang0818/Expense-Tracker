@@ -10,11 +10,11 @@
     <h1>Budgets</h1>
     <% if (budgets && budgets.length > 0) { %>
 
-      <% let totalAmountAll = budgets.reduce((acc, budget) => acc + budget.amount, 0); %>
+      <% let totalAmountAll = budgets.reduce((acc, budget) => acc + budget.amount, 0) %>
       <h3>All Budget: $<%= totalAmountAll %></h3>
 
       <div class="budget-cards">
-        <% let uniquePeriods = new Set(); %>
+        <% let uniquePeriods = new Set() %>
         <% budgets.forEach(budget => { %>
           <% if (budget.owner.equals(user?.profile._id)) { %>
           <% if (!uniquePeriods.has(budget.timePeriod)) { %>
@@ -30,7 +30,7 @@
                       <form
                         action="/budgets/<%= b._id %>?_method=DELETE"
                         method="POST"
-                        style="display: inline;"
+                        style="display: inline"
                       >
                         <button type="submit" class="delete-btn">Delete</button>
                       </form>
@@ -38,7 +38,7 @@
                   <% }) %>
               </ul>
             </div>
-            <% uniquePeriods.add(budget.timePeriod); %>
+            <% uniquePeriods.add(budget.timePeriod) %>
           <% } %>
           <% } %>
         <% }) %>
@@ -55,6 +55,6 @@
 function totalAmountForPeriod(timePeriod) {
   return budgets
     .filter(b => b.timePeriod === timePeriod)
-    .reduce((acc, b) => acc + b.amount, 0);
+    .reduce((acc, b) => acc + b.amount, 0)
 }
 %>

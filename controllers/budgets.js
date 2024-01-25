@@ -18,12 +18,12 @@ function index(req, res){
       res.render('budgets/index', {
         budgets,
         title: 'Budget'
-      });
+      })
     })
     .catch(err => {
-      console.log(err);
-      res.redirect("/");
-    });
+      console.log(err)
+      res.redirect("/")
+    })
 }
 
 function deleteBudget(req, res){
