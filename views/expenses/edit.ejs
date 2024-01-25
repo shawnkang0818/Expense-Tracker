@@ -3,7 +3,7 @@
 <%- include('../partials/nav') %>
 
 <section>
-
+  <% if (expense.owner.equals(user?.profile._id)) { %>
     <h2>Edit Expense Info</h2>
     <form id="new-form" action="/expenses/<%= expense._id %>?_method=PUT"  method="POST">
       <label for="price-input">Price: </label>
@@ -21,7 +21,7 @@
     <form action="/expenses/<%= expense._id %>?_method=DELETE" method="POST">
       <button class="btn" type="submit">Delete this expense</button>
     </form>
-
+  <% } %>
 </section>
 
 
