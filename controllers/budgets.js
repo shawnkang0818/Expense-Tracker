@@ -26,7 +26,27 @@ function index(req, res){
     });
 }
 
+function deleteBudget(req, res){
+  Budget.findById(req.params.budgetId)
+  .then(budget => {
+    if(budget.owner.equals(req.user.profile._id)){
+      req.body.reasonable = !!req.body.reasonable
+      budget.deleteOne()
+      .then(() => {
+        res.redirect('/budgets')
+      })
+    } else {
+      throw new Error('Not authorized')
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/budgets')
+  })
+}
+
 export {
   create,
   index,
+  deleteBudget as delete
 }
