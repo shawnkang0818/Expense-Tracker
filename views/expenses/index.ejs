@@ -1,56 +1,72 @@
-
 <%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/expenses/form.css" />
+<link rel="stylesheet" href="/stylesheets/expenses/style.css" />
 <link rel="stylesheet"
-          href=
-"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <%- include('../partials/nav') %>
 
-<section>
-  <img src="<%= user.profile.avatar %>" alt="">
-  <h1>Expanse</h1>
-  <% if (user) { %>
-    <h2>Add a Expense</h2>
-    <form action="/expenses" method="POST">
-      <label for="price-input">Price: </label>
-      <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0" required>
-      <label for="date-input">Date Spent:</label>
-      <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input" required>
-      <label for="category-input">category: </label>
-      <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food" required>
-      <label for="description-textarea"> Description: </label>
-      <textarea type="text" id="description-textarea" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
-      <label for="reasonable-input" >Reasonable</label>
-      <input type="checkbox" name="reasonable" required>
-      <button type="submit">Add Expense</button>
+<section class="expense-budget-section">
+  <div class="left-column">
+    <% if (user) { %>
+      <h2>Add an Expense</h2>
+      <form action="/expenses" method="POST" class="expense-form">
+        <label for="price-input">Price:</label>
+        <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0" required>
+        <label for="date-input">Date Spent:</label>
+        <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input" required>
+        <label for="category-input">Category:</label>
+        <input type="text" id="category-input" name="category" autocomplete="off" placeholder="food" required>
+        <label for="description-textarea">Description:</label>
+        <textarea type="text" id="description-textarea" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
+        <label for="reasonable-input">Reasonable</label>
+        <input type="checkbox" name="reasonable" required>
+        <button type="submit">Add Expense</button>
+      </form>
+    <% } %>
+  </div>
+
+  <div class="right-column">
+    <% if (user) { %>
+    <h2>Add Budget</h2>
+    <form action="/budgets" method="POST" class="budget-form">
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required>
+      <label for="category">Category:</label>
+      <input type="text" id="category" name="category" required>
+      <label for="timePeriod">Time Period:</label>
+      <input type="text" id="timePeriod" name="timePeriod" required>
+      <button type="submit">Create Budget</button>
     </form>
-  <% } %>
-  <h2>Expense list</h2>
+    <% } %>
+  </div>
+</section>
+
+<section class="expense-list-section">
+  <h2>Expense List</h2>
   <% let sum = 0 %>
-  <table>
-    <thread>
+  <table class="expense-table">
+    <thead>
       <tr>
-        <th>Price </th>
+        <th>Price</th>
         <th>Date</th>
-        <!-- <th>Category</th> -->
         <th>Description</th>
         <th>Reasonable?</th>
+        <th>Action</th>
       </tr>
-    </thread>
+    </thead>
     <tbody>
       <% expenses.forEach(expense => { %>
         <% sum += expense.price %>
-       <tr>
-        <td>$<%= expense.price %></a></td>
-        <td><%= expense.date.toLocaleString() %></td>
-        <!-- <td><%= expense.category %></td> -->
-        <td><%= expense.description %></td>
-        <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
-        <td><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></td>
-        
-       </tr>
+        <tr>
+          <td>$<%= expense.price %></td>
+          <td><%= expense.date.toLocaleString() %></td>
+          <td><%= expense.description %></td>
+          <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
+          <td><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></td>
+        </tr>
       <% }) %>
-      <h4>Total Expense: $<%= sum %></h4>
+      <tr>
+        <td colspan="4">Total Expense: $<%= sum %></td>
+      </tr>
     </tbody>
   </table>
 </section>

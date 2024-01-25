@@ -1,101 +1,26 @@
-html {
-  box-sizing: border-box
-}
-
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
-*::after { /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
-  box-sizing: inherit;
-}
-
-body {
-  background-color: #1a1a1a;
-  color: #f6f6f6;
-  /* Use a system font, if none are available use any found sans-sarif font */
-  font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
-    'Helvetica Neue', sans-serif;
-  margin: 0;
-}
-
 nav {
-  background-color: #f6f6f6;
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: #333;
+  color: #fff; 
   padding: 10px;
-  min-height: 60px;
-}
-
-main {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-h1 {
-  font-size: 36px;
-}
-
-h2 {
-  font-size: 30px;
-}
-
-h3 {
-  font-size: 24px;
-}
-
-ul {
-  list-style-type: none;
-}
-
-p, label, li, button, input {
-  font-size: 18px;
-}
-
-label {
-  font-weight: bold;
-}
-
-section {
-  padding: 50px;
-}
-
-a {
-  color: #00B7FF;
-}
-
-pre {
-  font-size: 14px;
-}
-
-nav > a {
-  margin: 8px 24px;
+nav a {
+  color: #fff;
   text-decoration: none;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 15px;
 }
 
-.btn {
-  margin: 16px 0;
+nav img {
+  width: 30px; /* Set the desired width for the profile image */
+  border-radius: 50%;
 }
 
-.link {
-  padding: 12px 0;
-  font-size: 18px;
-  display: inline-block;
-}
-
-.profile-avatar {
-  margin-top: 50px;
-}
-
-.inline {
-  display: inline;
+footer {
+  background-color: #333; 
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }

@@ -1,0 +1,94 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+section {
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.expense-budget-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-column, .right-column {
+  width: 48%;
+}
+
+.expense-form, .budget-form {
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.expense-form label, .budget-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.expense-form input, .budget-form input, .expense-form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.expense-form button, .budget-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.expense-form button:hover, .budget-form button:hover {
+  background-color: #45a049;
+}
+
+.expense-list-section {
+  clear: both;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.expense-table th, .expense-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.expense-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.expense-table td {
+  background-color: #f9f9f9;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
