@@ -15,4 +15,4 @@ const Budget = mongoose.model('Budget', budgetSchema)
 
 export {
   Budget
-};
+}
