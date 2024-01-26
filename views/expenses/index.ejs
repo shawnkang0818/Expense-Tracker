@@ -11,7 +11,7 @@
       <form action="/expenses" method="POST" class="expense-form">
         <label for="price-input">Price:</label>
         <input type="text" id="price-input" name="price" autocomplete="off" placeholder="0" required>
-        <label for="date-input">Date Spent:</label>
+        <label for="date-input">Date:</label>
         <input type="datetime-local" name="date" min="2024-01-20T09:00" id="date-input" required>
         <label for="description-textarea">Description:</label>
         <textarea type="text" id="description-textarea" placeholder="Enter description" name="description" autocomplete="off" rows="2" cols="30"></textarea>
@@ -30,8 +30,8 @@
         <input type="number" id="amount" name="amount" required>
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" required>
-        <label for="timePeriod">Time Period:</label>
-        <input type="text" id="timePeriod" name="timePeriod" required>
+        <label for="timePeriod">Date:</label>
+        <input type="datetime" id="timePeriod" name="timePeriod" required>
         <button type="submit">Add Budget</button>
       </form>
     <% } %>
@@ -41,7 +41,6 @@
 <section class="expense-list-section">
   <% if (user) { %>
   <h2>Expense List</h2>
-  <% let sum = 0 %>
   <table class="expense-table">
     <thead>
       <tr>
@@ -53,12 +52,13 @@
       </tr>
     </thead>
     <tbody>
+      <% let sum = 0 %>
         <% expenses.forEach(expense => { %>
           <% sum += expense.price %>
           <% if (expense.owner.equals(user?.profile._id)) { %>
           <tr>
             <td>$<%= expense.price %></td>
-            <td><%= expense.date.toISOString().slice(0,16) %></td>
+            <td><%= expense.date.toLocaleString().slice(0,15) %></td>
             <td><%= expense.description %></td>
             <td><a href="/expenses/<%= expense._id %>"><%= expense.reasonable ? 'reasonable' : 'not reasonable' %></a></td>
             <td><a href="/expenses/<%= expense._id %>/edit"><i class="fa fa-edit"></i></a></td>

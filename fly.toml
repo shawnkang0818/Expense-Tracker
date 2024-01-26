@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for expense-tracker-zk on 2024-01-25T22:46:26-05:00
+# fly.toml app configuration file generated for expense-tracker-sk1 on 2024-01-26T00:47:16-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'expense-tracker-zk'
+app = 'expense-tracker-sk1'
 primary_region = 'ewr'
 
 [build]
