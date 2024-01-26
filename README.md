@@ -7,7 +7,7 @@
 Expense Tracker is an Web application that helps users track their expenses, manage budgets, and gain insights into their spending habits. This app provides a user-friendly interface for adding, editing, and viewing expenses and budgets.
 ****
 ### Getting Started
-- [Link to Deployed App](https://expense-tracker-sk1.fly.)
+- [Link to Deployed App](https://expense-tracker-sk1.fly.dev)
 - [Trello Board](https://trello.com/b/oyWOqIX7/expense-tracker)
 ****
 ### Attributions
