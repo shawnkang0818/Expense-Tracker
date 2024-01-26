@@ -8,7 +8,7 @@ const router = Router()
 //GET localhost:3000/expenses
 router.get('/', expensesCtrl.index)
 //GET localhost:3000/expenses
-router.get('/:expenseId', expensesCtrl.show)
+router.get('/:expenseId', isLoggedIn, expensesCtrl.show)
 //POST localhost:3000/expenses
 router.post('/', isLoggedIn, expensesCtrl.create)
 //Patch localhost:3000/tacos/changeReasonable
