@@ -1,7 +1,7 @@
 # Expense Tracker
 ****
 ## Screenshot
-![Alt text](ET.jpg)
+![Alt text](img/ET.jpg)
 ****
 ### Description
 Expense Tracker is an Web application that helps users track their expenses, manage budgets, and gain insights into their spending habits. This app provides a user-friendly interface for adding, editing, and viewing expenses and budgets.
