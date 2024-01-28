@@ -10,7 +10,7 @@
 	<ul>
     <li>Money Spent: <%= expense.price %></li>
   
-    <li>Date: <%= expense.date.toLocaleString() %></li>
+    <li>Date: <%= expense.date.toLocaleString().slice(0,15) %></li>
     <!-- <td><%= expense.category %></td> -->
     <li>Description: <%= expense.description %></li>
   

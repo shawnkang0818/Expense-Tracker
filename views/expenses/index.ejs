@@ -31,7 +31,7 @@
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" placeholder="food" required>
         <label for="timePeriod">Date:</label>
-        <input type="datetime" id="timePeriod" name="timePeriod" placeholder="01/26/2024" required>
+        <input type="datetime-local" id="timePeriod" name="timePeriod" placeholder="01/26/2024" required>
         <button type="submit">Add Budget</button>
       </form>
     <% } %>
@@ -54,8 +54,9 @@
     <tbody>
       <% let sum = 0 %>
         <% expenses.forEach(expense => { %>
-          <% sum += expense.price %>
           <% if (expense.owner.equals(user?.profile._id)) { %>
+          <% sum += expense.price %>
+          
           <tr>
             <td>$<%= expense.price %></td>
             <td><%= expense.date.toLocaleString().slice(0,15) %></td>

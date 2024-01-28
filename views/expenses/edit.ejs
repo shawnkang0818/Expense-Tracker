@@ -3,7 +3,7 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <% if (expense.owner.equals(user?.profile._id)) { %>
+  <% if (user) { %>
     <h2>Edit Expense Info</h2>
     <form id="new-form" action="/expenses/<%= expense._id %>?_method=PUT"  method="POST">
       <label for="price-input">Price: </label>
