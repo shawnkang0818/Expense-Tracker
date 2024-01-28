@@ -29,6 +29,8 @@ Expense Tracker is an Web application that helps users track their expenses, man
 	<code><img width="40" height ="40" src="https://user-images.githubusercontent.com/25181517/183568594-85e280a7-0d7e-4d1a-9028-c8c2209e073c.png" alt="Node.js" title="Node.js"/></code>
 	<code><img width="40" height ="40" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" alt="Express" title="Express"/></code>
 	<code><img width="40" height ="40" src="https://user-images.githubusercontent.com/25181517/182884177-d48a8579-2cd0-447a-b9a6-ffc7cb02560e.png" alt="mongoDB" title="mongoDB"/></code>
+	<code><img width="40" height ="40" src="https://blog.logrocket.com/wp-content/uploads/2021/08/authenticate-access-google-apis-using-oauth-2-0.png" alt="googleOauth" title="googleOauth"/></code>
+	<code><img width="40" height ="40" src="https://d33wubrfki0l68.cloudfront.net/974c69c9f79d7cca861f8d408baad54c188e88c4/8216c/assets/passportjs-google-oauth-strategy.png" alt="passport" title="passport"/></code>
 </div>
 
 ****
