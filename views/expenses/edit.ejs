@@ -9,7 +9,7 @@
       <label for="price-input">Price: </label>
       <input type="text" id="price-input" name="price" value="<%= expense.price %>" required>
       <label for="date-input">Date Spent:</label>
-      <input type="datetime-local" name="date" min="2024-01-21 09:00" id="date-input" value="<%= expense.date.toISOString().slice(0,16) %>" required>
+      <input type="date" name="date" min="2024-01-21" id="date-input" value="<%= expense.date.toISOString().slice(0,10) %>" required>
       <label for="description-textarea"> Description: </label>
       <input type="text" id="description-textarea" name="description" rows="2" cols="30" value="<%= expense.description %>"></input>
       <label for="reasonable-input" >Reasonable</label>
