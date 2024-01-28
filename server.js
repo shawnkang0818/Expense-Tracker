@@ -3,6 +3,7 @@ import 'dotenv/config.js'
 import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 import createError from 'http-errors'
 import session from 'express-session'
 import logger from 'morgan'
@@ -23,10 +24,15 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as expensesRouter } from './routes/expenses.js'
 import { router as budgetsRouter } from './routes/budgets.js'
+import serveFavicon from 'serve-favicon'
 
 
 // create the express app
 const app = express()
+
+// Get the directory name of the current module file
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 // view engine setup
 app.set('view engine', 'ejs')
@@ -41,6 +47,10 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(express.static(__dirname))
+app.use(serveFavicon(path.join(__dirname, 'public', 'img', 'favicon-32x32.png')))
+
+
 
 // session middleware
 app.use(
