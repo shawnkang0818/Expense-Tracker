@@ -9,22 +9,24 @@
     
     <h1>Budgets</h1>
     <% if (budgets && budgets.length > 0) { %>
-      <% let totalAmountAll = budgets
-      .filter(budget => budget.owner.equals(user?.profile._id))
-      .reduce((acc, budget) => acc + budget.amount, 0) %>
+      <% let filteredBudgets = budgets
+        .filter(budget => budget.owner.equals(user?.profile._id))
+        .sort((a, b) => a.timePeriod - b.timePeriod); // Sort budgets by date
+
+      let totalAmountAll = filteredBudgets.reduce((acc, budget) => acc + budget.amount, 0) %>
 
       <h3>All Budget: $<%= totalAmountAll %></h3>
       <div class="budget-cards">
         <% let uniquePeriods = new Set() %>
-        <% budgets.forEach(budget => { %>
-          <% if (budget.owner.equals(user?.profile._id)) { %>
-          <% if (!uniquePeriods.has(budget.timePeriod)) { %>
+        <% filteredBudgets.forEach(budget => { %>
+          <% if (!uniquePeriods.has(budget.timePeriod.toISOString())) { %>
             <div class="budget-card">
-              <h2><%= budget.timePeriod.toLocaleString().slice(0,9)%></h2>
-              <p>Total Amount: $<%= totalAmountForPeriod(budget.timePeriod) %></p>
+              <h2><%= new Date(budget.timePeriod).toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' }) %></h2>
+
+              <p>Total Amount: $<%= totalAmountForPeriod(budget.timePeriod, filteredBudgets) %></p>
               <ul class="budget-list">
-                <% budgets
-                  .filter(b => b.timePeriod === budget.timePeriod)
+                <% filteredBudgets
+                  .filter(b => b.timePeriod.toISOString() === budget.timePeriod.toISOString())
                   .forEach(b => { %>
                     <li>
                       $<%= b.amount %> - <%= b.category %>
@@ -39,8 +41,7 @@
                   <% }) %>
               </ul>
             </div>
-            <% uniquePeriods.add(budget.timePeriod) %>
-          <% } %>
+            <% uniquePeriods.add(budget.timePeriod.toISOString()) %>
           <% } %>
         <% }) %>
       </div>
@@ -53,9 +54,9 @@
 <%- include('../partials/footer') %>
 
 <%
-function totalAmountForPeriod(timePeriod) {
-  return budgets
-    .filter(b => b.timePeriod === timePeriod)
+function totalAmountForPeriod(timePeriod, filteredBudgets) {
+  return filteredBudgets
+    .filter(b => b.timePeriod.toISOString() === timePeriod.toISOString())
     .reduce((acc, b) => acc + b.amount, 0)
 }
 %>
