@@ -9,11 +9,17 @@
     
     <h1>Budgets</h1>
     <% if (budgets && budgets.length > 0) { %>
-      <% let filteredBudgets = budgets
-        .filter(budget => budget.owner.equals(user?.profile._id))
-        .sort((a, b) => a.timePeriod - b.timePeriod); // Sort budgets by date
+      <% const filteredBudgets = budgets
+      .filter(budget => budget.owner.equals(user?.profile._id))
+      .sort((a, b) => a.timePeriod - b.timePeriod); // Sort budgets by date
 
-      let totalAmountAll = filteredBudgets.reduce((acc, budget) => acc + budget.amount, 0) %>
+      const totalAmountAll = filteredBudgets.reduce((acc, budget) => {
+        if (budget.owner.equals(user?.profile._id)) {
+          return acc + budget.amount;
+        }
+        return acc;
+        }, 0); 
+      %>
 
       <h3>All Budget: $<%= totalAmountAll %></h3>
       <div class="budget-cards">
