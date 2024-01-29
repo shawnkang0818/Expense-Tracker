@@ -13,7 +13,7 @@
       <label for="description-textarea"> Description: </label>
       <input type="text" id="description-textarea" name="description" rows="2" cols="30" value="<%= expense.description %>"></input>
       <label for="reasonable-input" >Reasonable</label>
-      <input type="checkbox" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
+      <input type="checkbox" class="check" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
   <div class="btn-container" >
       <button class="btn" type="submit">Save Change</button>
     </form>

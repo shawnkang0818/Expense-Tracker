@@ -39,7 +39,7 @@ input, textarea {
 }
 
 .btn {
-  background-color: #3498db;
+  background-color: #2a352a;
   color: #fff;
   padding: 10px 15px;
   border: none;
@@ -48,5 +48,5 @@ input, textarea {
 }
 
 .btn:hover {
-  background-color: #2980b9;
+  background-color: #384238;
 }

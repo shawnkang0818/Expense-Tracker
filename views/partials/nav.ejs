@@ -1,13 +1,13 @@
 <% if (!user) { %>
   <link rel="stylesheet" href="/stylesheets/style.css" />
-  
+
   <script defer src="https://accounts.google.com/gsi/client"></script>
 <% } %>
 </head>
 <body>
   <nav>
-    <% if (user && user.profile) { %>
-      <img src="<%= user.profile.avatar %>" alt="">
+    <% if (user?.profile.avatar) { %>
+      <img src="<%= user.profile.avatar %>" alt="<%= user.profile.name %> avatar">
     <% } %>
     <a href="/expenses">Expense</a>
     <a href="/budgets">Budget</a>

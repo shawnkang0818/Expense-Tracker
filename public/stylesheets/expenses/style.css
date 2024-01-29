@@ -47,7 +47,7 @@ section {
 }
 
 .expense-form button, .budget-form button {
-  background-color: #4CAF50;
+  background-color: #2a352a;
   color: white;
   padding: 10px;
   border: none;
@@ -56,7 +56,7 @@ section {
 }
 
 .expense-form button:hover, .budget-form button:hover {
-  background-color: #45a049;
+  background-color: #384238;
 }
 
 .expense-list-section {
@@ -75,7 +75,7 @@ section {
 }
 
 .expense-table th {
-  background-color: #4CAF50;
+  background-color: #2a352a;
   color: white;
 }
 
