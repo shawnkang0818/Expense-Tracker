@@ -3,8 +3,8 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <% if (user) { %>
     <h2>Edit Expense Info</h2>
+    <% if (user) { %>
     <form id="new-form" action="/expenses/<%= expense._id %>?_method=PUT"  method="POST">
       <label for="price-input">Price: </label>
       <input type="text" id="price-input" name="price" value="<%= expense.price %>" required>
@@ -13,7 +13,7 @@
       <label for="description-textarea"> Description: </label>
       <input type="text" id="description-textarea" name="description" rows="2" cols="30" value="<%= expense.description %>"></input>
       <label for="reasonable-input" >Reasonable</label>
-      <input type="checkbox" class="check" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
+      <input type="checkbox" id="reasonable-input" class="check" name="reasonable" <%= expense.reasonable ? 'checked' : 'null' %>>
   <div class="btn-container" >
       <button class="btn" type="submit">Save Change</button>
     </form>
